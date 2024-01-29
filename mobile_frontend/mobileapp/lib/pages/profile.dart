@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:io';
 
+
 class Profile extends StatefulWidget{
   @override
   _ProfileState createState() => _ProfileState();
@@ -15,7 +16,7 @@ class _ProfileState extends State<Profile>{
   
 Future<void> getWaterLevelModels(String userId) async {
   try {
-    final url = Uri.parse('http://54.208.4.191/api/user/hardware/tank-exits?userId=$userId');
+    final url = Uri.parse('http://54.160.171.100/api/user/hardware/tank-exits?userId=$userId');
     final response = await http.post(url);
 
     if (response.statusCode == 200) {
@@ -41,7 +42,7 @@ Future<void> getWaterLevelModels(String userId) async {
 }
 Future<void> registerUser(String tankId,String uid) async {
   try {
-    final url = Uri.parse('http://54.208.4.191/api/user/hardware/tank-registration');
+    final url = Uri.parse('http://54.160.171.100/api/user/hardware/tank-registration');
     final response = await http.post(
       url,
       body: json.encode({'tankId': tankId,
@@ -84,7 +85,8 @@ Future<void> registerUser(String tankId,String uid) async {
         actions:[ 
           // ignore: prefer_const_constructors
           IconButton(onPressed:(){
-            Navigator.pushNamed(context, '/home');  
+            Navigator.pushNamed(context, '/home');
+             
             
           }, icon: Icon(Icons.arrow_drop_down_sharp)
           ,

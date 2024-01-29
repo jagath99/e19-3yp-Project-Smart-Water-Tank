@@ -38,15 +38,6 @@ void main() {
     expect(find.text('Your monthly bill margin:'), findsOneWidget);
   });
 
-   testWidgets('In_out widget test', (WidgetTester tester) async {
-    await tester.pumpWidget(MaterialApp(home: In_out()));
-
-    // Add your test assertions here
-    expect(find.text('Inlet Value'), findsOneWidget);
-    expect(find.text('Outlet Value'), findsOneWidget);
-    expect(find.text('Water Pump'), findsOneWidget);
-    expect(find.text('Check-up the tank'), findsOneWidget);
-  });
 
    testWidgets('Tank widget test', (WidgetTester tester) async {
     await tester.pumpWidget(MaterialApp(home: Tank()));

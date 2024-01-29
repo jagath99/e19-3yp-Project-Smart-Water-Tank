@@ -100,7 +100,7 @@ class _in_out extends State<In_out> {
   Future<void> handleOutputValveChange() async {
     try {
       final response = await http.post(
-        Uri.parse("http://54.208.4.191/api/user/hardware/send-output-valve"),
+        Uri.parse("http://54.160.171.100/api/user/hardware/send-output-valve"),
         headers: {
           HttpHeaders.contentTypeHeader: 'application/json',
         },
@@ -118,7 +118,7 @@ class _in_out extends State<In_out> {
   Future<void> handleinputValveChange() async {
     try {
       final response = await http.post(
-        Uri.parse("http://54.208.4.191/api/user/hardware/send-input-valve"),
+        Uri.parse("http://54.160.171.100/api/user/hardware/send-input-valve"),
         headers: {
           HttpHeaders.contentTypeHeader: 'application/json',
         },
@@ -135,13 +135,13 @@ class _in_out extends State<In_out> {
   Future<void> handlemotorpump() async {
     try {
       final response = await http.post(
-        Uri.parse("http://54.208.4.191/api/user/hardware/send-motor-pump"),
+        Uri.parse("http://54.160.171.100/api/user/hardware/send-motor-pump"),
         headers: {
           HttpHeaders.contentTypeHeader: 'application/json',
         },
         body: json.encode({
           "userId": uid,
-          "string": "motorpump${!motorPump}",
+          "string": "motorPump${!motorPump}",
         }),
       );
       print(response.body);
@@ -153,7 +153,7 @@ class _in_out extends State<In_out> {
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-    uid = Provider.of<userpro>(context).id;
+    uid = Provider.of<userpro>(context,listen:false).id;
     return Scaffold(
       appBar: AppBar(
         title: SizedBox(

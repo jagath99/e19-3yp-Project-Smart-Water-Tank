@@ -12,6 +12,7 @@ import 'package:mobileapp/handle/userPro.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mobileapp/pages/profile.dart';
 
+
 void main() {
   runApp(
     MultiProvider(
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
   initialRoute: '/login',
   routes:{
     
-    '/':(context) => Loading(),
+     '/load': (context) => Loading(),
     '/home':(context) => Home(),
     '/tank':(context) => Tank(),
     '/inout':(context) =>In_out(),

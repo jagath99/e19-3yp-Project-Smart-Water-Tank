@@ -21,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
 
     try {
       final response = await http.post(
-        Uri.parse('http://54.208.4.191/api/user/login'),
+        Uri.parse('http://54.160.171.100/api/user/login'),
         headers: {
           HttpHeaders.contentTypeHeader: 'application/json',
         },
@@ -126,7 +126,7 @@ class _LoginPageState extends State<LoginPage> {
 
   Future<void> getUserInfoById(String token) async {
   print('user in: $token');
-  const url = 'http://54.208.4.191/api/user/get-user-info-by-id';
+  const url = 'http://54.160.171.100/api/user/get-user-info-by-id';
   final response = await http.post(
     Uri.parse(url),
     headers: {
@@ -150,6 +150,7 @@ class _LoginPageState extends State<LoginPage> {
       print('User Info: $data');
       print('User ID: $name');
       Provider.of<userpro>(context, listen: false).setuser(userID); 
+      //Provider.of<userpro>(context, listen: false).setname(name);
     } else {
       // User doesn't exist
       final message = responseData['message'];

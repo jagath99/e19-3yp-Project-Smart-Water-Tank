@@ -5,6 +5,9 @@ import 'package:provider/provider.dart';
 import 'dart:convert';
 import 'dart:io';
 import 'package:liquid_progress_indicator_v2/liquid_progress_indicator.dart';
+import 'package:mobileapp/pages/loading.dart' as loading;
+
+
 
 
 class Tank extends StatefulWidget{
@@ -23,10 +26,13 @@ class _tank extends State<Tank>{
   Widget build(BuildContext context){
     final screenSize = MediaQuery.of(context).size; // Define screenSize variable
     String uid= Provider.of<userpro>(context).id;
-    String user= Provider.of<userpro>(context).name;
+    //String user= Provider.of<userpro>(context,listen:false).name;
     waterlevel=Provider.of<userpro>(context).waterlevel;
 
     waterLevel= double.parse(waterlevel);
+    
+
+    // ...
 
     return Scaffold(
       appBar:AppBar(
@@ -47,16 +53,26 @@ class _tank extends State<Tank>{
         
 
       ) ,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+      body: GestureDetector(
+         onTap: () {
+          // Call getWaterLevel function when tapping the screen
+          loading.getWaterLevel(context, uid);
+        },
+      child:Container(
+        child:Align(
+          alignment:Alignment.center,
+        child:Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        
         children: [
            Text('CURRENT WATER LEVEL '+'$waterLevel',style: TextStyle(
             fontSize: 20,
             fontFamily: 'Rubik',
           ),),
         
-          Text('Hi $user!!!',style: TextStyle(
-            fontSize: 20,
+          Text('Hi $uid !!!',style: TextStyle(
+            fontSize: 10,
             fontFamily: 'Rubik',
           ),),
          Container(
@@ -67,8 +83,8 @@ class _tank extends State<Tank>{
             margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
             //color: Colors.amber,
             child:SizedBox(
-          height: screenSize.height * 0.4,
-          width: screenSize.width*0.5, // Set maximum height for the image
+          height: screenSize.width*0.8,
+          width: screenSize.width*0.8, // Set maximum height for the image
          child:  LiquidCircularProgressIndicator(
           value: waterLevel*0.01, // Set the progress value between 0.0 and 1.0
           valueColor: AlwaysStoppedAnimation(Color.fromARGB(207, 27, 123, 201)),
@@ -82,7 +98,7 @@ class _tank extends State<Tank>{
         ),
             
          
-          Container(
+          /*Container(
              
             color: Colors.cyan,
             child:Row(
@@ -181,10 +197,12 @@ DropdownButton<String>(
               },
             ),
               ],)
-              ),
+              ),*/
                
               ],
             ),
+        )
+      )),
              
           );
 

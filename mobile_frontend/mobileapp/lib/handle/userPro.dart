@@ -6,7 +6,7 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';  
 
    Future<void> getWaterLevel(String userId) async {
-  final url = 'http://54.208.4.191/api/user/hardware/receive-water-level';
+  final url = 'http://54.160.171.100/api/user/hardware/receive-water-level';
   final response = await http.post(Uri.parse(url),
       headers: {
        'Content-Type': 'application/json',

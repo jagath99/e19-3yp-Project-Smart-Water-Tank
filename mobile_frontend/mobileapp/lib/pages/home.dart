@@ -41,7 +41,7 @@ Container(
   margin: EdgeInsets.all(8.0), // Set the desired margin value
   child: ElevatedButton(
     onPressed: () {
-      Navigator.pushNamed(context, '/tank');
+      Navigator.pushNamed(context, '/load');
     },
     // ignore: sort_child_properties_last
     child: Row(
