@@ -85,7 +85,12 @@ router.post("/send-input-valve", async (req, res) => {
         .status(500)
         .send({ message: "Error sending data to AWS IoT", success: false, err });
     }
+<<<<<<< Updated upstream
   }
+=======
+    
+  
+>>>>>>> Stashed changes
 });
 
 // output valve
